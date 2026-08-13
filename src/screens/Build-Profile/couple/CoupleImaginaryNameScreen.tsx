@@ -1,0 +1,82 @@
+import { Alert, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import GoBack from '../../../components/GoBack';
+import { commonStyles } from '../../../assets/style/style';
+import ProcessLine from '../../../components/ProcessLine';
+import Button from '../../../components/Button';
+import SimpleInputText from '../../../components/SimpleTextInput';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../../navigations/RootNavigator';
+import { useNavigation } from '@react-navigation/native';
+
+type PropsType = NativeStackNavigationProp<
+  RootStackParamList,
+  'chooseSingleName'
+>;
+
+const CoupleImaginaryNameScreen = () => {
+  const navigation = useNavigation<PropsType>();
+  const [name, setName] = useState('');
+
+  const handleClick = () => {
+    if (!name) {
+      Alert.alert('Enter a name');
+    } else {
+      navigation.navigate('coupledob');
+    }
+  };
+  return (
+    <View style={commonStyles.container1}>
+      <ProcessLine width={'12%'} />
+      <View style={commonStyles.Goback}>
+        <GoBack />
+      </View>
+      <View style={{ paddingHorizontal: 25, paddingTop: 25, gap: 10 }}>
+        <Text style={[commonStyles.whiteText, commonStyles.largeText]}>
+          Imaginary couple name
+        </Text>
+        <Text style={[commonStyles.whiteText, commonStyles.smallText]}>
+          Pineapple encourages the use of imaginary names. Be open, never exposed.
+        </Text>
+
+        <SimpleInputText
+          placeholder="Imaginary name"
+          value={name}
+          onChangeText={setName}
+          maxLength={20}
+          showSuccess={name.length > 0}
+        />
+
+        <Text
+          style={[
+            commonStyles.whiteText,
+            commonStyles.smallText,
+            { textAlign: 'right' },
+          ]}
+        >
+          {name.length}/20
+        </Text>
+      </View>
+
+      <View style={styles.button}>
+        <Button
+          title="Continue"
+          buttonColor="#EBFF00"
+          textColor="black"
+          onPress={handleClick}
+        />
+      </View>
+    </View>
+  );
+};
+
+export default CoupleImaginaryNameScreen;
+
+const styles = StyleSheet.create({
+  button: {
+    position: 'absolute',
+    bottom: 25,
+    paddingHorizontal: 25,
+    width: '100%',
+  },
+});

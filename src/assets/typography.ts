@@ -1,8 +1,11 @@
 export const colors = {
   primary: '#EBFF00',
+  modalBackground:'#1A1B22',
   secondary: '#000000',
-  background: '#FFFFFF',
+  normalText:'#A5A7AF',
+  background: '#1A1B22',
   textPrimary: '#000000',
+  buttonColor:'#262A34',
   textSecondary: '#666666',
   white: '#FFFFFF',
   border: '#E5E5E5',

@@ -5,6 +5,8 @@ import {
   StyleProp,
   TextStyle,
   Image,
+  Touchable,
+  TouchableOpacity,
 } from 'react-native';
 import React, { useState } from 'react';
 import { ImageSourcePropType } from 'react-native';
@@ -15,15 +17,18 @@ interface InputTextProps {
   maxLength?:number;
   showSuccess?: boolean ;
   onChangeText?: (text: string) => void;
+  onPress?: () => void;
   style?: StyleProp<TextStyle>;
   icon?: ImageSourcePropType | string;
   icon2?: ImageSourcePropType | string;
+
 }
 
 const InputText = ({
   placeholder = '',
   value = '',
   onChangeText = () => {},
+  onPress = () => {},
   style,
   maxLength,
   icon2,
@@ -33,7 +38,7 @@ const InputText = ({
   return (
     <View style={{ width: '100%', marginTop: 10 }}>
       <View
-        style={[styles.container,{borderColor: isFocus?'#EBFF00':'#262A34'}]}
+        style={[styles.container,{borderColor: isFocus?'#EBFF00':'#262A34',alignItems:'center'}]}
       >
         {icon && (
           <Image
@@ -52,7 +57,8 @@ const InputText = ({
           onChangeText={onChangeText}
           style={[styles.input, style]}
         />
-         {icon && (
+         <TouchableOpacity onPress={onPress}>
+          {icon && (
           <Image
             source={
               typeof icon2 === 'string'
@@ -61,6 +67,7 @@ const InputText = ({
             }
           />
         )}
+         </TouchableOpacity>
       </View>
     </View>
   );

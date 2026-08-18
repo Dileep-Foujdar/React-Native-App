@@ -20,10 +20,12 @@ import InterstedScreen from '../screens/Build-Profile/Single/InterstedScreen';
 import SelectLookingScreen from '../screens/Build-Profile/Single/SelectLookingScreen';
 import ProfilePictureScreen from '../screens/Build-Profile/Single/ProfilePictureScreen';
 import AllowNotificationScreen from '../screens/Build-Profile/Single/AllowNotificationScreen';
-import FeedScreen from '../screens/Feed-Screens/FeedScreen';
 import CoupleImaginaryNameScreen from '../screens/Build-Profile/couple/CoupleImaginaryNameScreen';
 import CoupleDOBScreen from '../screens/Build-Profile/couple/CoupleDOBScreen';
 import BottomNavigator from './BottomNavigation';
+import CommentScreen from '../screens/Feed-Screens/CommentScreen';
+import SearchScreen from '../screens/search-filter/SearchScreen';
+import FilterScreen from '../screens/search-filter/FilterScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -55,6 +57,9 @@ export type RootStackParamList = {
   feedscreen: undefined;
   couplename: undefined;
   coupledob: undefined;
+  comment: undefined;
+  search: undefined;
+  filter:undefined;
 };
 
 const RootNavigator = () => {
@@ -85,6 +90,10 @@ const RootNavigator = () => {
       <Stack.Screen name="feedscreen" component={BottomNavigator} />
       <Stack.Screen name="couplename" component={CoupleImaginaryNameScreen} />
       <Stack.Screen name="coupledob" component={CoupleDOBScreen} />
+      <Stack.Screen name="comment" component={CommentScreen} />
+      <Stack.Screen name="search" component={SearchScreen} />
+      <Stack.Screen name="filter" component={FilterScreen} />
+      
     </Stack.Navigator>
   );
 };

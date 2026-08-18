@@ -5,17 +5,19 @@ import {
   StyleProp,
   TextStyle,
   Image,
+  TouchableOpacity,
 } from 'react-native';
-import React, { useState } from 'react';
+import React from 'react';
 import { ImageSourcePropType } from 'react-native';
 import { TextInputProps } from 'react-native';
 
 interface InputTextProps extends TextInputProps {
   placeholder?: string;
   value?: string;
-  maxLength?:number;
-  showSuccess?: boolean ;
+  maxLength?: number;
+  showSuccess?: boolean;
   onChangeText?: (text: string) => void;
+  onPress?: () => void;
   style?: StyleProp<TextStyle>;
   icon?: ImageSourcePropType | string;
   icon2?: ImageSourcePropType | string;
@@ -31,12 +33,11 @@ const SimpleInputText = ({
   maxLength,
   icon2,
   icon,
+  onPress = () => {},
 }: InputTextProps) => {
   return (
     <View style={{ width: '100%', marginTop: 10 }}>
-      <View
-        style={[styles.container,{borderColor: '#262A34'}]}
-      >
+      <View style={[styles.container, { borderColor: '#262A34' }]}>
         {icon && (
           <Image
             source={
@@ -52,15 +53,17 @@ const SimpleInputText = ({
           onChangeText={onChangeText}
           style={[styles.input, style]}
         />
-         {icon && (
-          <Image
-            source={
-              typeof icon2 === 'string'
-                ? { uri: icon2 } // remote URL
-                : icon2 // local image
-            }
-          />
-        )}
+        <TouchableOpacity onPress={onPress}>
+          {icon && (
+            <Image
+              source={
+                typeof icon2 === 'string'
+                  ? { uri: icon2 } // remote URL
+                  : icon2 // local image
+              }
+            />
+          )}
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -69,22 +72,22 @@ const SimpleInputText = ({
 export default SimpleInputText;
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     flexDirection: 'row',
-          backgroundColor: '#262A34',
-          width: '100%',
-          alignItems: 'center',
-            borderRadius: 12,
-            paddingHorizontal:15,
-            paddingVertical:5,
-            gap:4,
-            borderWidth:1
+    backgroundColor: '#262A34',
+    width: '100%',
+    alignItems: 'center',
+    borderRadius: 12,
+    paddingHorizontal: 15,
+    paddingVertical: 5,
+    gap: 4,
+    borderWidth: 1,
   },
   input: {
     borderRadius: 10,
     fontSize: 16,
     width: '100%',
-    color:'white',
-    fontFamily:'bordan'
+    color: 'white',
+    fontFamily: 'bordan',
   },
 });

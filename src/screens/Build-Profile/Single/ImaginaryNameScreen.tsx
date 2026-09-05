@@ -8,6 +8,9 @@ import SimpleInputText from '../../../components/SimpleTextInput';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigations/RootNavigator';
 import { useNavigation } from '@react-navigation/native';
+import { setnewname,clearnewname } from '../../../redux/slices/nameSlice';
+import { RootState } from '../../../redux/sotre';
+import { useDispatch,useSelector } from 'react-redux';
 
 type PropsType = NativeStackNavigationProp<
   RootStackParamList,
@@ -16,7 +19,11 @@ type PropsType = NativeStackNavigationProp<
 
 const ImaginaryNameScreen = () => {
   const navigation = useNavigation<PropsType>();
-  const [name, setName] = useState('');
+  const dispatch = useDispatch();
+
+  const name = useSelector(
+    (state:RootState)=> state.username.userName
+  )
 
   const handleClick = () => {
     if (!name) {
@@ -46,7 +53,7 @@ const ImaginaryNameScreen = () => {
         <SimpleInputText
           placeholder="Imaginary name"
           value={name}
-          onChangeText={setName}
+          onChangeText={text=>dispatch(setnewname(text))}
           maxLength={20}
           showSuccess={name.length > 0}
         />

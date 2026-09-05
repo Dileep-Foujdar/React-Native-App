@@ -3,8 +3,8 @@ import { ImageSourcePropType } from 'react-native';
 import { Text, TouchableOpacity, StyleSheet, View, Image } from 'react-native';
 
 interface ButtonProps {
-  title: string;
-  onPress: () => void;
+  title?: string;
+  onPress?: () => void;
   buttonColor?: string;
   textColor?: string;
   style?: object;

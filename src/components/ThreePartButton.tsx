@@ -8,8 +8,8 @@ import { colors } from '../assets/typography';
 
 interface PropsType {
   midText?: string;
-  buttonTitle: string;
-  onPress: () => void;
+  buttonTitle?: string;
+  onPress?: () => void;
 }
 
 const ThreePartButton = ({ midText, buttonTitle, onPress }: PropsType) => {
@@ -20,7 +20,7 @@ const ThreePartButton = ({ midText, buttonTitle, onPress }: PropsType) => {
         width: '100%',
         paddingHorizontal: 20,
         flexDirection: 'row',
-        alignItems:'center'
+        alignItems: 'center',
       }}
     >
       <TouchableOpacity
@@ -40,7 +40,12 @@ const ThreePartButton = ({ midText, buttonTitle, onPress }: PropsType) => {
         style={[
           commonStyles.whiteText,
           commonStyles.largeText,
-          { justifyContent: 'center', width: '33.33%' },
+          {
+            justifyContent: 'center',
+            alignItems:'center',
+            width: buttonTitle ? '33.33%' : '70%',
+            flexWrap: 'nowrap',
+          },
         ]}
       >
         {midText}

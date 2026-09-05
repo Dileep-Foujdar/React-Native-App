@@ -2,8 +2,6 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { commonStyles } from '../../assets/style/style';
-import { colors } from '../../assets/typography';
-import { images } from '../../assets/images/image';
 import Header from '../../components/Header';
 
 const FeedScreen = () => {

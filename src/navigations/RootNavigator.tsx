@@ -26,12 +26,28 @@ import BottomNavigator from './BottomNavigation';
 import CommentScreen from '../screens/Feed-Screens/CommentScreen';
 import SearchScreen from '../screens/search-filter/SearchScreen';
 import FilterScreen from '../screens/search-filter/FilterScreen';
+import ForInterestedScreen from '../screens/search-filter/ForInterestedScreen';
+import KinksScreen from '../screens/search-filter/KinksScreen';
+import BodyTypeScreen from '../screens/search-filter/BodyTypeScreen';
+import DistanceScreen from '../screens/search-filter/DistanceScreen';
+import LocationSearchScreen from '../screens/search-filter/LocationSearchScreen';
+import NotificationScreen from '../screens/Feed-Screens/NotificationScreen';
+import DrinkingScreen from '../screens/search-filter/DrinkingScreen';
+import HeightScreen from '../screens/search-filter/HeightScreen';
+import PearcingScreen from '../screens/search-filter/PearcingScreen';
+import ReligionScreen from '../screens/search-filter/ReligionScreen';
+import SaxualityScreen from '../screens/search-filter/SaxualityScreen';
+import SmookingScreen from '../screens/search-filter/SmookingScreen';
+import TattoosScreen from '../screens/search-filter/TattoosScreen';
+import AgeScreen from '../screens/search-filter/AgeScreen';
+import ProfileTopNavigator from './ProfileTopNavigation';
 
 const Stack = createNativeStackNavigator();
 
 export type RootStackParamList = {
   Splash: undefined;
   Home: undefined;
+  slider:undefined;
   Login: undefined;
   signUpOption: undefined;
   signInWithEmail: undefined;
@@ -60,6 +76,21 @@ export type RootStackParamList = {
   comment: undefined;
   search: undefined;
   filter:undefined;
+  filterinterested:undefined;
+  kinks:undefined;
+  bodytype:undefined;
+  distance:undefined;
+  locationsearch:undefined;
+  notification:undefined;
+  drinking:undefined;
+  height:undefined;
+  pearcing:undefined;
+  religion:undefined;
+  saxuality:undefined;
+  smooking:undefined;
+  tattoos:undefined;
+  age:undefined;
+  profilenavigation:undefined;
 };
 
 const RootNavigator = () => {
@@ -83,6 +114,7 @@ const RootNavigator = () => {
       <Stack.Screen name="interest" component={InterstedScreen} />
       <Stack.Screen name="lookingfor" component={SelectLookingScreen} />
       <Stack.Screen name="profilephoto" component={ProfilePictureScreen} />
+      <Stack.Screen name="height" component={HeightScreen} />
       <Stack.Screen
         name="allownotification"
         component={AllowNotificationScreen}
@@ -92,8 +124,21 @@ const RootNavigator = () => {
       <Stack.Screen name="coupledob" component={CoupleDOBScreen} />
       <Stack.Screen name="comment" component={CommentScreen} />
       <Stack.Screen name="search" component={SearchScreen} />
+      <Stack.Screen name="age" component={AgeScreen} />
       <Stack.Screen name="filter" component={FilterScreen} />
-      
+      <Stack.Screen name="filterinterested" component={ForInterestedScreen} />
+      <Stack.Screen name="kinks" component={KinksScreen} />
+      <Stack.Screen name="bodytype" component={BodyTypeScreen} />
+      <Stack.Screen name="distance" component={DistanceScreen} />
+      <Stack.Screen name="locationsearch" component={LocationSearchScreen} />
+      <Stack.Screen name="notification" component={NotificationScreen} />
+      <Stack.Screen name="drinking" component={DrinkingScreen} />
+      <Stack.Screen name="pearcing" component={PearcingScreen} />
+      <Stack.Screen name="religion" component={ReligionScreen} />
+      <Stack.Screen name="saxuality" component={SaxualityScreen} />
+      <Stack.Screen name="smooking" component={SmookingScreen} />
+      <Stack.Screen name="tattoos" component={TattoosScreen} />
+      <Stack.Screen name="profilenavigation" component={ProfileTopNavigator} />
     </Stack.Navigator>
   );
 };

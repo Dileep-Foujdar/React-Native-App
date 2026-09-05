@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { commonStyles } from '../../assets/style/style';
 import { images } from '../../assets/images/image';
 import Button from '../../components/Button';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigations/RootNavigator';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import TrackingModal from '../../components/TrackingModel';
 
 type NavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -15,7 +14,6 @@ type NavigationProp = NativeStackNavigationProp<
 
 const ChooseSingleCoupleScreen = () => {
   const navigation = useNavigation<NavigationProp>()
-  const [visible,setVisible] = useState(false);
   return (
     <View style={commonStyles.container}>
       <Image source={images.logo} />

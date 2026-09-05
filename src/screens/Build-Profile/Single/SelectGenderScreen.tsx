@@ -17,17 +17,27 @@ import { useNavigation } from '@react-navigation/native';
 import CheckBox from '../../../components/CheckBox';
 import { images } from '../../../assets/images/image';
 import GenderModal from '../../../components/GenderModal';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectsinglegender,
+  clearselectedgender,
+} from '../../../redux/slices/singleGenderSlice';
+import { RootState } from '../../../redux/sotre';
 
-type PropsType = NativeStackNavigationProp<RootStackParamList, 'selectsaxuality'>;
+type PropsType = NativeStackNavigationProp<
+  RootStackParamList,
+  'selectsaxuality'
+>;
 
 const SelectGenderScreen = () => {
   const navigation = useNavigation<PropsType>();
-  const [selectgender, setSelectGender] = useState<string>('');
+  const dispatch = useDispatch();
+  const gender = useSelector((state: RootState) => state.singlegender.gender);
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [showOnProfile, setShowOnProfile] = useState(true);
 
   const handleButton = () => {
-    if (!selectgender) {
+    if (!gender) {
       Alert.alert('All about you');
     } else {
       navigation.navigate('selectsaxuality');
@@ -54,17 +64,25 @@ const SelectGenderScreen = () => {
         </Text>
         <View style={{ gap: 10 }}>
           <CheckBox
-            onPress={() =>
-              setSelectGender(prev => (prev === 'Man' ? '' : 'Man'))
-            }
-            select={selectgender === 'Man'}
+            onPress={() => {
+              if (gender === 'Man') {
+                dispatch(clearselectedgender());
+              } else {
+                dispatch(selectsinglegender('Man'));
+              }
+            }}
+            select={gender === 'Man'}
             genderName="Man"
           />
           <CheckBox
-            onPress={() =>
-              setSelectGender(prev => (prev === 'Women' ? '' : 'Women'))
-            }
-            select={selectgender === 'Women'}
+            onPress={() => {
+              if (gender === 'Women') {
+                dispatch(clearselectedgender());
+              } else {
+                dispatch(selectsinglegender('Women'));
+              }
+            }}
+            select={gender === 'Women'}
             genderName="Women"
           />
           <Button
@@ -79,36 +97,36 @@ const SelectGenderScreen = () => {
               setOpenModal(prev => !prev);
             }}
           />
-          {selectgender && showOnProfile && (
-  <View
-    style={{
-      flexDirection: 'row',
-      alignSelf: 'flex-start',
-      backgroundColor: '#EBFF00',
-      borderRadius: 50,
-      paddingHorizontal: 20,
-      paddingVertical: 10,
-      alignItems: 'center',
-      gap: 15,
-    }}
-  >
-    <Text
-      style={[
-        commonStyles.smallText,
-        {
-          color: 'black',
-          fontFamily: 'bordan',
-        },
-      ]}
-    >
-      {selectgender}
-    </Text>
+          {gender && showOnProfile && (
+            <View
+              style={{
+                flexDirection: 'row',
+                alignSelf: 'flex-start',
+                backgroundColor: '#EBFF00',
+                borderRadius: 50,
+                paddingHorizontal: 20,
+                paddingVertical: 10,
+                alignItems: 'center',
+                gap: 15,
+              }}
+            >
+              <Text
+                style={[
+                  commonStyles.smallText,
+                  {
+                    color: 'black',
+                    fontFamily: 'bordan',
+                  },
+                ]}
+              >
+                {gender}
+              </Text>
 
-    <TouchableOpacity onPress={() => setSelectGender('')}>
-      <Image source={images.closeIcon} />
-    </TouchableOpacity>
-  </View>
-)}
+              <TouchableOpacity onPress={() => dispatch(clearselectedgender())}>
+                <Image source={images.closeIcon} />
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
       </View>
 
@@ -118,7 +136,7 @@ const SelectGenderScreen = () => {
         />
         <View style={{ paddingHorizontal: 25 }}>
           <Button
-             onPress={() => setShowOnProfile(prev => !prev)}
+            onPress={() => setShowOnProfile(prev => !prev)}
             buttonColor="#262A34"
             rightIcon={showOnProfile ? images.switchOn : images.switchOff}
             style={{
@@ -129,20 +147,22 @@ const SelectGenderScreen = () => {
             }}
             title="Show on my Profile"
           />
-          <View style={{ opacity: selectgender ? 1 : 0.4 }}>
+          <View style={{ opacity: gender ? 1 : 0.4 }}>
             <Button
               title="Continue"
               buttonColor="#EBFF00"
               textColor="black"
-              isDisabled={!selectgender}
+              isDisabled={!gender}
               onPress={handleButton}
             />
           </View>
         </View>
       </View>
       <GenderModal
-        selectgender={selectgender}
-        onSelectgender={setSelectGender}
+        selectgender={gender}
+        onSelectgender={(selectedGender: string) =>
+          dispatch(selectsinglegender(selectedGender))
+        }
         visible={openModal}
         onClose={() => setOpenModal(false)}
       />

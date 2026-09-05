@@ -6,7 +6,7 @@ export const commonStyles = StyleSheet.create({
     backgroundColor: '#1A1B22',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 25,
+    // paddingHorizontal: 25,
   },
   container1: {
     flex: 1,
@@ -33,11 +33,29 @@ export const commonStyles = StyleSheet.create({
     textAlign: 'left',
     color: '#A5A7AF',
     lineHeight: 20,
-    fontSize: 17,
+    fontSize: 15,
   },
   largeText: {
-    fontSize: 24,
+    fontSize: 20,
     textAlign: 'left',
+  },
+  inputcontainer: {
+    flexDirection: 'row',
+    backgroundColor: '#262A34',
+    width: '100%',
+    alignItems: 'center',
+    borderRadius: 12,
+    paddingHorizontal: 15,
+    paddingVertical: 5,
+    gap: 4,
+    borderWidth: 1,
+  },
+  input: {
+    borderRadius: 12,
+    fontSize: 14,
+    width: '100%',
+    color: 'white',
+    fontFamily: 'bordan',
   },
   
 });

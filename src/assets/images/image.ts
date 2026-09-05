@@ -44,4 +44,10 @@ export const images = {
     saxualityIcon:require("../images/saxuality-icon.png"),
     smookingIcon:require("../images/smooking-icon.png"),
     tatoosIcon:require("../images/tatoos-icon.png"),
+    activeWinks:require("../images/Active-winks-icon.png"),
+    listicon:require("../images/listicon.png"),
+    activelisticon:require("../images/activelisticon.png"),
+    gridicon:require("../images/gridIcon.png"),
+    activegridicon:require("../images/activegridicon.png"),
+    userbadge:require("../images/User-badges.png"),
 }

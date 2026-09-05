@@ -26,6 +26,7 @@ const InterstedScreen = () => {
   const [selectgender, setSelectGender] = useState<string>('');
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [showOnProfile, setShowOnProfile] = useState(true);
+  
 
   const handleButton = () => {
     if (!selectgender) {

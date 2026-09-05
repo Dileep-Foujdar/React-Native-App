@@ -1,7 +1,7 @@
 export const colors = {
   primary: '#EBFF00',
   modalBackground:'#1A1B22',
-  secondary: '#000000',
+  secondary: '#262A34',
   normalText:'#A5A7AF',
   background: '#1A1B22',
   textPrimary: '#000000',

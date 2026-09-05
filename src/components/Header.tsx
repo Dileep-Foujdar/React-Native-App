@@ -33,7 +33,9 @@ const Header = () => {
           <TouchableOpacity onPress={()=>navigation.navigate('search')}>
             <Image source={images.graySearchIcon} />
           </TouchableOpacity>
-          <Image source={images.notificationIcon} />
+          <TouchableOpacity onPress={()=>navigation.navigate('notification')}>
+            <Image source={images.notificationIcon} />
+          </TouchableOpacity>
         </View>
       </View>
     </View>

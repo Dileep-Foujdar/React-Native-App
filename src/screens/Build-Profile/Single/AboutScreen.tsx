@@ -9,6 +9,10 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigations/RootNavigator';
 import { useNavigation } from '@react-navigation/native';
 import GoBackOtherButton from '../../../components/GoBackOtherButton';
+import { useDispatch,useSelector } from 'react-redux';
+import { clearaboutus,setaboutus } from '../../../redux/slices/aboutUsSlice';
+import { RootState } from '../../../redux/sotre';
+
 
 type PropsType = NativeStackNavigationProp<
   RootStackParamList,
@@ -17,9 +21,12 @@ type PropsType = NativeStackNavigationProp<
 
 const AboutScreen = () => {
   const navigation = useNavigation<PropsType>();
-  const [about, setAbout] = useState('');
+  const dispatch = useDispatch();
+  const aboutus = useSelector(
+    (state:RootState)=>state.aboutus.aboutUs
+  )
   const handleButton = () =>{
-    if(!about){
+    if(!setaboutus){
         Alert.alert("All about you");
     }else{
         navigation.navigate('selectgender')
@@ -39,10 +46,10 @@ const AboutScreen = () => {
 
         <SimpleInputText
           placeholder="Add a short bio to introduce you as a couple"
-          value={about}
+          value={aboutus}
           maxLength={200}
           style={{height:100,textAlignVertical:'top'}}
-          onChangeText={setAbout}
+          onChangeText={text=>dispatch(setaboutus(text))}
           multiline
           numberOfLines={5}
         />
